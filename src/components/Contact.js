@@ -4,10 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 
 class Contact extends Component {
-  state = {};
-
-  onShowClick = (e) => {
-    console.log(e);
+  state = {
+    showContactInfo: false
   };
 
   onShowClick() {
@@ -15,17 +13,27 @@ class Contact extends Component {
   }
   render() {
     const { name, email, phone } = this.props.contact;
+    const { showContactInfo } = this.state;
 
     return (
       <div className="card card-body mb-3">
         <h4>
           {name}
-          <FontAwesomeIcon onClick={this.onShowClick} icon={faSortDown} />
+          <FontAwesomeIcon
+            onClick={() =>
+              this.setState({
+                showContactInfo: !this.state.showContactInfo
+              })
+            }
+            icon={faSortDown}
+          />
         </h4>
-        <ul className="list-group">
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-        </ul>
+        {showContactInfo ? (
+          <ul className="list-group">
+            <li className="list-group-item">Email: {email}</li>
+            <li className="list-group-item">Phone: {phone}</li>
+          </ul>
+        ) : null}
       </div>
     );
   }
