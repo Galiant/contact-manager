@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Consumer } from '../../context';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSortDown, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {
+  faSortDown,
+  faTimes,
+  faPencilAlt
+} from '@fortawesome/free-solid-svg-icons';
 
 class Contact extends Component {
   state = {
@@ -45,6 +50,18 @@ class Contact extends Component {
                   style={{ cursor: 'pointer', float: 'right', color: 'red' }}
                   onClick={this.onDeleteClick.bind(this, id, dispatch)}
                 />
+
+                <Link to={`contact/edit/${id}`}>
+                  <FontAwesomeIcon
+                    icon={faPencilAlt}
+                    style={{
+                      cursor: 'pointer',
+                      float: 'right',
+                      color: 'black',
+                      marginRight: '1rem'
+                    }}
+                  />
+                </Link>
               </h4>
               {showContactInfo ? (
                 <ul className="list-group">
