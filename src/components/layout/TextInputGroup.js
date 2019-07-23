@@ -15,8 +15,8 @@ const TextInputGroup = ({
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
-        name={name}
         type={type}
+        name={name}
         className={classnames('form-control form-control-lg', {
           'is-invalid': error
         })}
@@ -36,7 +36,7 @@ TextInputGroup.propTypes = {
   value: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired
+  error: PropTypes.string
 };
 
 TextInputGroup.defaultProps = {
